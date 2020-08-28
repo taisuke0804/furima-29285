@@ -36,9 +36,7 @@ Things you may want to cover:
 | first_name       | string  | null: false |  ## 名前
 | family_name_kata | string  | null: false |  ## ミョウジ
 | first_name_kata  | string  | null: false |  ## ナマエ
-| birth_year       | integer | null: false |  ## 生年月日（年）
-| birth_month      | integer | null: false |  ## 生年月日（月）
-| birth_day        | integer | null: false |  ## 生年月日（日）
+| birth            | date    | null: false |  ## 生年月日
 
 ### Association
 
@@ -106,7 +104,7 @@ Things you may want to cover:
 | city            | string     | null: false                    |  ## 市町村
 | street_number   | string     | null: false                    |  ## 番地
 | building        | string     |                                |  ## 建物
-| phone_number    | integer    | null: false                    |  ## 電話番号
+| phone_number    | string     | null: false                    |  ## 電話番号
 | management      | references | null: false, foreign_key: true |  ## 管理テーブル
 
 ### Association
