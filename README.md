@@ -45,6 +45,23 @@ Things you may want to cover:
 - has_many :items
 - has_many :purchases
 - has_many :comments
+- has_many :managements
+
+
+## managements テーブル
+
+| Column    | Type       | Options                        |
+|-----------|------------|--------------------------------|
+| item_name | references | null: false, foreign_key: true |  ## 商品
+| user 　　　| references | null: false, foreign_key: true |  ## 出品者
+| sold 　　　| boolean    |                                |  ## 売れたか否か
+| favorite  | integer    |                                |  ## お気に入り
+
+### Association
+
+- belongs_to :users
+- has_many   :items
+
 
 ## items テーブル
 
@@ -58,14 +75,15 @@ Things you may want to cover:
 | delivery_fee | string     | null: false                    |  ## 発送料負担
 | sending_area | string     | null: false                    |  ## 発送元地域
 | sending_day  | string     | null: false                    |  ## 発送目安
-| favorite     | integer    |                                |  ## お気に入り
-| user         | references | null: false, foreign_key: true |  ## ユーザーID
+| user         | references | null: false, foreign_key: true |  ## 出品者ID
 
 ### Association
 
+- belongs_to :management
 - belongs_to :user
-- has_one    :comments
+- has_one    :comment
 - has_one    :purchase
+
 
 ## comments テーブル
 
@@ -80,22 +98,20 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :item
 
+
 ## purchases テーブル
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
-| card_number     | integer    | null: false                    |  ## カードナンバー
-| card_term_year  | integer    | null: false                    |  ## 有効期限（年）
-| card_term_month | integer    | null: false                    |  ## 有効期間（月）
-| card_code       | integer    | null: false                    |  ## セキュリティーコード
-| post_number     | integer    | null: false                    |  ## 郵便番号
-| prefecture      | string     | null: false                    |  ## 県
+| post_number     | string     | null: false                    |  ## 郵便番号
+| prefecture      | integer    | null: false                    |  ## 県
 | city            | string     | null: false                    |  ## 市町村
 | street_number   | string     | null: false                    |  ## 番地
 | building        | string     |                                |  ## 建物
 | phone_number    | integer    | null: false                    |  ## 電話番号
+| price           | integer    | null: false                    |  ## 値段
 | item            | references | null: false, foreign_key: true |  ## アイテムID
-| price           | references | null: false, foreign_key: true |  ## 値段ID
+| user            | references | null: false, foreign_key: true |  ## 購入者ID
 
 ### Association
 
