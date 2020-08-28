@@ -43,7 +43,6 @@ Things you may want to cover:
 ### Association
 
 - has_many :items
-- has_many :purchases
 - has_many :comments
 - has_many :managements
 
@@ -82,7 +81,6 @@ Things you may want to cover:
 - has_one    :management
 - belongs_to :user
 - has_one    :comment
-- has_one    :purchase
 
 
 ## comments テーブル
@@ -113,6 +111,4 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to :user
-- belongs_to :item
 - belongs_to :management
