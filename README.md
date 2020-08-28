@@ -52,34 +52,34 @@ Things you may want to cover:
 
 | Column    | Type       | Options                        |
 |-----------|------------|--------------------------------|
-| item_name | references | null: false, foreign_key: true |  ## 商品
+| item      | references | null: false, foreign_key: true |  ## 商品
 | user 　　　| references | null: false, foreign_key: true |  ## 出品者
-| sold 　　　| boolean    |                                |  ## 売れたか否か
-| favorite  | integer    |                                |  ## お気に入り
 
 ### Association
 
-- belongs_to :users
-- has_many   :items
+- belongs_to :user
+- belongs_to :item
+- has_one    :purchase
 
 
 ## items テーブル
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
-| item_name    | string     | null: false                    |  ## 商品名
+| item         | string     | null: false                    |  ## 商品名
 | price        | integer    | null: false                    |  ## 値段
-| category     | string     | null: false                    |  ## カテゴリー
-| condition    | string     | null: false                    |  ## 商品状態
+| category     | integer    | null: false                    |  ## カテゴリー
+| condition    | integer    | null: false                    |  ## 商品状態
 | explanation  | text       | null: false                    |  ## 商品説明
-| delivery_fee | string     | null: false                    |  ## 発送料負担
-| sending_area | string     | null: false                    |  ## 発送元地域
-| sending_day  | string     | null: false                    |  ## 発送目安
+| delivery_fee | integer    | null: false                    |  ## 発送料負担
+| sending_area | integer    | null: false                    |  ## 発送元地域
+| sending_day  | integer    | null: false                    |  ## 発送目安
 | user         | references | null: false, foreign_key: true |  ## 出品者ID
+| favorite     | integer    |                                |  ## お気に入り
 
 ### Association
 
-- belongs_to :management
+- has_one    :management
 - belongs_to :user
 - has_one    :comment
 - has_one    :purchase
@@ -109,11 +109,10 @@ Things you may want to cover:
 | street_number   | string     | null: false                    |  ## 番地
 | building        | string     |                                |  ## 建物
 | phone_number    | integer    | null: false                    |  ## 電話番号
-| price           | integer    | null: false                    |  ## 値段
-| item            | references | null: false, foreign_key: true |  ## アイテムID
-| user            | references | null: false, foreign_key: true |  ## 購入者ID
+| management      | references | null: false, foreign_key: true |  ## 管理テーブル
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
+- belongs_to :management
