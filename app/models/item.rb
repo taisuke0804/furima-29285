@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :sending_day
 
   #空の投稿を保存できないようにする
+  validates :item, :image, :explanation, :price, presence: true
   validates :category, presence: true
   validates :condition, presence: true
   validates :delivery_fee, presence: true

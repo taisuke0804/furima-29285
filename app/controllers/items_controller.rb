@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :move_to_index, except: :index
 
   def index
+    @items = Item.all
   end
 
   def new
@@ -27,7 +28,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:image, :item, :explanation, :category_id, :condition, :delivery_fee, :sending_area, :sending_day, :price).merge(user_id: current_user.id)
+    params.require(:item).permit(:image, :item, :explanation, :category_id, :condition_id, :delivery_fee_id, :sending_area_id, :sending_day_id, :price).merge(user_id: current_user.id)
   end
 
 end
