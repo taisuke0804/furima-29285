@@ -8,6 +8,10 @@ class ItemsController < ApplicationController
     
   end
 
+  def create
+    Item.create(item_params)
+  end
+
   private
 
   def move_to_index
