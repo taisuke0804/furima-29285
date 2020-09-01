@@ -50,7 +50,7 @@ Things you may want to cover:
 | Column    | Type       | Options                        |
 |-----------|------------|--------------------------------|
 | item      | references | null: false, foreign_key: true |  ## 商品
-| user 　　　| references | null: false, foreign_key: true |  ## 出品者
+| user      | references | null: false, foreign_key: true |  ## 出品者
 
 ### Association
 
