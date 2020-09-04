@@ -30,8 +30,12 @@
       <%= link_to '削除', item_path, method: :delete, class:'item-destroy' %>
     <% end %>
 
-    <% unless user_signed_in? && current_user.id == @item.user_id %>
+    <% if user_signed_in? && current_user.id != @item.user_id %>
       <%= link_to '購入画面に進む', item_orders_path(@item.id) ,class:"item-red-btn"%>
+    <% end %>
+
+    <% unless user_signed_in? %>
+      <%= link_to '購入画面に進む', new_user_session_path ,class:"item-red-btn"%>
     <% end %>
 
     
