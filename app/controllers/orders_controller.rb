@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    #@item = Item.find(params[:item_id])
+    #binding.pry
     @order = CreditOrder.new(order_params)
     #binding.pry
     if @order.valid?
@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.permit(:token, :post_number, :prefecture_id, :city, :street_number, :building, :phone_number, :item_id)
+    params.permit(:token, :post_number, :prefecture_id, :city, :street_number, :building, :phone_number, :item_id).merge(user_id: current_user.id)
     #params.permit(:authenticity_token, :post_number, :prefecture_id, :city, :street_number, :building, :phone_number, :item_id)
   end
   
