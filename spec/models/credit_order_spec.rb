@@ -45,8 +45,8 @@ RSpec.describe CreditOrder, type: :model do
       expect(@order.errors.full_messages).to include("Phone number can't be blank")
     end
 
-    it 'ハイフンが付いてる11桁の電話番号では購入できない' do
-      @order.phone_number = '03-1111-2222'
+    it '11桁以上の電話番号では購入できない' do
+      @order.phone_number = '090111122223'
       @order.valid?
       expect(@order.errors.full_messages).to include("Phone number is invalid")
     end
