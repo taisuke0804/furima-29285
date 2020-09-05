@@ -1,12 +1,8 @@
 class OrdersController < ApplicationController
-  #before_action :authenticate_user!
   before_action :move_to_sessions, only: :index
-  
+  before_action :no_buying
   
   def index
-    #unless user_signed_im?
-      #redirect_to new_user_session_path 
-    #end
     @item = Item.find(params[:item_id])
     @order = CreditOrder.new
   end
@@ -48,5 +44,12 @@ class OrdersController < ApplicationController
       card: order_params[:token],
       currency:'jpy'
     )
+  end
+
+  def no_buying
+    @item = Item.find(params[:item_id])
+    if @item.management != nil
+      redirect_to root_path
+    end
   end
 end

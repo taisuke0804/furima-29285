@@ -4,7 +4,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.order("created_at DESC")
-    @managements = Management.all
   end
 
   def new
