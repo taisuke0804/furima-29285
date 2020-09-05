@@ -1,5 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe Purchase, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#create' do
+    before do
+      @purchase = FactoryBot.build(:purchase)
+    end
+
+    it '全項目を入力していれば保存できる' do
+      expect(@purchase).to be_valid
+    end
+
+    it 'post_number 12345678' do
+      @purchase.post_number = 1234567
+      @purchase.valid?
+      binding.pry
+    end
+  end
 end

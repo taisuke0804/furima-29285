@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
       #redirect_to new_user_session_path 
     #end
     @item = Item.find(params[:item_id])
+    @order = CreditOrder.new
   end
 
   def new
@@ -15,6 +16,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+    @item = Item.find(params[:item_id])
     @order = CreditOrder.new(order_params)
     if @order.valid?
       pay_item
