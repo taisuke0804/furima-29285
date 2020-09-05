@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
+  before_action :item_find, only: [:index, :create, :move_to_sessions, :pay_item, :no_buying]
   before_action :move_to_sessions, only: :index
   before_action :no_buying
   
   def index
-    @item = Item.find(params[:item_id])
     @order = CreditOrder.new
   end
 
@@ -12,7 +12,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @order = CreditOrder.new(order_params)
     if @order.valid?
       pay_item
@@ -24,9 +23,12 @@ class OrdersController < ApplicationController
   end
 
   private
+  
+  def item_find
+    @item = Item.find(params[:item_id])
+  end
 
   def move_to_sessions
-    @item = Item.find(params[:item_id])
     unless user_signed_in? && current_user.id != @item.user_id
       redirect_to root_path
     end
@@ -37,7 +39,6 @@ class OrdersController < ApplicationController
   end
   
   def pay_item
-    @item = Item.find(params[:item_id])
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: @item.price,
@@ -47,7 +48,6 @@ class OrdersController < ApplicationController
   end
 
   def no_buying
-    @item = Item.find(params[:item_id])
     if @item.management != nil
       redirect_to root_path
     end
