@@ -7,6 +7,5 @@ FactoryBot.define do
     building {"マンション505"}
     phone_number {'09011112222'}
     token {123}
-    #association :management
   end
 end
