@@ -7,16 +7,12 @@ class CreditOrder
 
   with_options presence: true do
     validates :post_number, format: { with: POSTAL_CODE_REGEX }
-    validates :prefecture_id
+    validates :prefecture_id, numericality: { other_than: 1 }
     validates :city
     validates :street_number
     validates :phone_number, format: { with: /\A\d{1,11}\z/ }
-    #validates :phone_number, format: { with: /\d{1,11}/ }
-    #validates :phone_number, format: { with: /0\d{9,10}/ }
     validates :token
   end
-
-  validates :prefecture_id, numericality: { other_than: 1 }
 
   def save
     management = Management.create(user_id: user_id, item_id: item_id)
