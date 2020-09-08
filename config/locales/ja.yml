@@ -8,3 +8,13 @@ ja:
        family_name_kata: 苗字（フリガナ）
        first_name_kata: 名前（フリガナ）
        birth: 生年月日
+     item:
+       item: 商品名
+       explanation: 商品説明
+       price: 販売価格
+       image: 商品画像
+       category_id: カテゴリー
+       condition_id: 商品の状態
+       delivery_fee_id: 配送料の負担
+       sending_area_id: 発送元の地域
+       sending_day_id: 発送までの日数

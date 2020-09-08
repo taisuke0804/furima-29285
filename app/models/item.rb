@@ -15,7 +15,7 @@ class Item < ApplicationRecord
   end
 
   #ジャンルの選択が「--」の時は保存できないようにする
-  with_options numericality: { other_than: 1 } do
+  with_options numericality: { other_than: 1, message: "を選択してください" } do
     validates :category_id, :condition_id, :delivery_fee_id, :sending_area_id, :sending_day_id
   end
   
