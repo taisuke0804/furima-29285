@@ -5,6 +5,6 @@ ja:
        nickname: ニックネーム
        family_name: 苗字
        first_name: 名前
-       family_name_kata: 苗字
-       first_name_kata: 名前
+       family_name_kata: 苗字（フリガナ）
+       first_name_kata: 名前（フリガナ）
        birth: 生年月日
