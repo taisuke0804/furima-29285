@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show]
+  before_action :move_to_index, except: [:index, :show, :search]
   before_action :item_set, only: [:edit, :update, :show]
 
   def index
@@ -38,6 +38,10 @@ class ItemsController < ApplicationController
     item = Item.find(params[:id])
     item.destroy
     redirect_to root_path
+  end
+
+  def search
+    @items = Item.search(params[:keyword]).order("created_at DESC")
   end
 
   private
