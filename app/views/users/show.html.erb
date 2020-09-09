@@ -1,12 +1,25 @@
+<%= render "shared/header" %>
 <%# 商品一覧 %>
   <div class='item-contents'>
-    <h2 class='title'>マイページ</h2>
+    <h2 class='title'>
+      <%= @user.nickname %>
+      のマイページ
+    </h2>
+
+    <div class="show-edit">
+      <div class="profile" ><%= "氏名 #{@user.family_name + @user.first_name}" %></div>
+      <div class="profile" ><%= "フリガナ #{@user.family_name_kata + @user.first_name_kata}" %></div>
+      <div class="profile" ><%= "生年月日 #{@user.birth}" %></div>
+    </div>
+
+
+
     <%= link_to '出品商品一覧', "#", class: "subtitle" %>
     <ul class='item-lists'>
       <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
       <% @items.each do |item| %>
           <li class='list'>
-            <%= link_to "#" do %>
+            <%= link_to item_path(item.id) do %>
               <div class='item-img-content'>
                 <%= image_tag item.image, class: "item-img" %>
 
