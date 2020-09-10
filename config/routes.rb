@@ -8,4 +8,5 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: [:show, :edit]
+  resources :details, only: [:index, :search]
 end
