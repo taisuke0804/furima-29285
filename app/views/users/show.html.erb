@@ -6,12 +6,13 @@
       のマイページ
     </h2>
 
+<% if user_signed_in? && current_user.id == @user.id %>
     <div class="show-edit">
       <div class="profile" ><%= "氏名 #{@user.family_name + @user.first_name}" %></div>
       <div class="profile" ><%= "フリガナ #{@user.family_name_kata + @user.first_name_kata}" %></div>
       <div class="profile" ><%= "生年月日 #{@user.birth}" %></div>
     </div>
-
+<% end %>
 
 
     <%= link_to '出品商品一覧', "#", class: "subtitle" %>
