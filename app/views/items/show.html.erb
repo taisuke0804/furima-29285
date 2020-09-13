@@ -73,9 +73,9 @@
       </tbody>
     </table>
     <div class="option">
-      <div class="favorite-btn">
+      <div class="favorite-btn", id="favorite">
         <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
-        <span>お気に入り 0</span>
+        <span><%= "お気に入り 0" %></span>
       </div>
       <div class="report-btn">
         <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
@@ -109,7 +109,7 @@
     <h4>＜コメント一覧＞</h4>
     <% if @comments %>
       <% @comments.each do |comment| %>
-        <p class="comment-btn">
+        <p class="comment-btn", id="messages">
           <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
           <%= comment.content %>
           <% if user_signed_in? && current_user.id == comment.user_id %>

@@ -22,6 +22,9 @@ class ItemsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
+    if @comment.save
+      ActionCable.server.broadcast 'message_channel', content: @comment
+    end
   end
 
   def edit
