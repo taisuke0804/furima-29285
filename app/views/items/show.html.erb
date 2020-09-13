@@ -109,11 +109,13 @@
     <h4>＜コメント一覧＞</h4>
     <% if @comments %>
       <% @comments.each do |comment| %>
-        <p>
+        <p class="comment-btn">
           <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
           <%= comment.content %>
+          <% if user_signed_in? && current_user.id == comment.user_id %>
+            <%= link_to "(削除する)", "/items/#{comment.item_id}/comments/#{comment.id}", method: :delete %>
+          <% end %>
         </p>
-        <p></p>
       <% end %>
     <% end %>
   </div>
